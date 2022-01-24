@@ -1,5 +1,5 @@
-import { HeroComponent, ButtonSignInGoogle } from "./styles";
-import Icon from "../../images/google-icon.svg";
+import { HeroComponent } from "./styles";
+import { ButtonGoogleLogin } from "../ButtonGoogleLogin";
 const Hero = () => {
   return (
     <HeroComponent>
@@ -8,12 +8,7 @@ const Hero = () => {
         IPSUM DOLOR
       </h1>
       <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
-      <ButtonSignInGoogle>
-        <picture>
-          <img src={Icon} alt="" />
-        </picture>
-        <div>Sign in With Google</div>
-      </ButtonSignInGoogle>
+      <ButtonGoogleLogin />
     </HeroComponent>
   );
 };

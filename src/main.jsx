@@ -4,11 +4,14 @@ import App from "./app/App";
 import { FirebaseAppProvider } from "reactfire";
 import { firebaseConfig } from "../firebaseconfig";
 import "./index.css";
+import { ContextProvider } from "./context/AppContext";
 
 ReactDOM.render(
   <React.StrictMode>
     <FirebaseAppProvider firebaseConfig={firebaseConfig}>
-      <App />
+      <ContextProvider>
+        <App />
+      </ContextProvider>
     </FirebaseAppProvider>
   </React.StrictMode>,
   document.getElementById("root")
