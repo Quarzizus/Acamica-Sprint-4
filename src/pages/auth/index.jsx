@@ -1,9 +1,14 @@
-import { AuthPage } from "./styles";
+import { AuthPage, LogoComponent } from "./styles";
+import { Hero } from "../../components/Hero";
+import Logo from "../../images/logo.svg";
 
 const Auth = () => {
   return (
     <AuthPage>
-      <h2>Auth</h2>
+      <LogoComponent>
+        <img src={Logo} alt="" />
+      </LogoComponent>
+      <Hero />
     </AuthPage>
   );
 };
