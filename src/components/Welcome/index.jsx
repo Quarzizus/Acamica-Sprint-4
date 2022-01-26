@@ -3,6 +3,7 @@ import { Box } from "../Box";
 import { useContext, useState } from "react";
 import { AppContext } from "../../context/AppContext";
 import { colors } from "../Box/utils/colors";
+import { Link } from "react-router-dom";
 
 const Welcome = () => {
   const {
@@ -42,7 +43,9 @@ const Welcome = () => {
           return <Box key={box.id} handleSelect={handleSelect} {...box} />;
         })}
       </section>
-      <button>CONTINUE</button>
+      <Link to="/home">
+        <button>CONTINUE</button>
+      </Link>
     </WelcomeComponent>
   );
 };

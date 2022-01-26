@@ -30,6 +30,7 @@ const WelcomeComponent = styled.section`
     color: white;
     font-size: 1em;
     height: 67px;
+    width: 100%;
     cursor: pointer;
   }
 
