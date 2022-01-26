@@ -1,7 +1,7 @@
 import { BoxComponent } from "./styles";
 
-const Box = () => {
-  return <BoxComponent></BoxComponent>;
+const Box = ({color, select}) => {
+  return <BoxComponent bagColor={color} select={select}></BoxComponent>;
 };
 
 export { Box };

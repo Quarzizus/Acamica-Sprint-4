@@ -21,13 +21,13 @@ const HeroComponent = styled.section`
     line-height: 30px;
     font-size: 1.2rem;
   }
-  @media screen and (max-width: 670px) {
+  @media screen and (max-width: 720px) {
     grid-column: 1/2;
     h1 {
-      font-size: 0.8em;
+      font-size: 1.2em;
     }
     p {
-      font-size: 0.5em;
+      font-size: 0.6em;
     }
   }
 `;

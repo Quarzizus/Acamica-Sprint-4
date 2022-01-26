@@ -1,18 +1,22 @@
 import { WelcomeComponent } from "./styles";
 import { Box } from "../Box";
+import { useContext } from "react";
+import { AppContext } from "../../context/AppContext";
+import { colors } from "../Box/utils/colors"
 
 const Welcome = () => {
+  const {state: {name}} = useContext(AppContext)
   return (
     <WelcomeComponent>
       <h2>
         Welcome
         <br />
-        <span>Name!</span>
+        <span>{name}!</span>
       </h2>
       <p>Select your favorite</p>
       <section>
-        {[0, 1, 2, 3, 4, 5].map((box) => {
-          return <Box />;
+        {colors.map((box) => {
+          return <Box key={box.id} {...box}/>;
         })}
       </section>
       <button>CONTINUE</button>
