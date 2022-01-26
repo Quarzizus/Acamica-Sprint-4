@@ -6,9 +6,18 @@ const BoxComponent = styled.article`
       background-color: ${props.bagColor};
     `;
   }}
+  ${({ select }) =>
+    select == true
+      ? css`
+          border: 3px solid white;
+        `
+      : css`
+          border: 3px solid transparent;
+        `}
+
+
   width: 58px;
   height: 100%;
-  border: 3px solid transparent;
 
   &:hover {
     border: 3px solid white;

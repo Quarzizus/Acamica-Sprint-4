@@ -3,7 +3,7 @@ const INITIAL_STATE = {
   loading: "",
   error: "",
   email: "",
-  color: "",
+  color: "#F50D5A",
   name: "",
 };
 

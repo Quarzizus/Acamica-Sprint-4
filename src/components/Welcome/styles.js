@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const WelcomeComponent = styled.section`
   display: flex;
@@ -13,7 +13,9 @@ const WelcomeComponent = styled.section`
     line-height: 50px;
     font-size: 1.5em;
     span {
-      color: #f50d5a;
+      ${({ color }) => css`
+        color: ${color};
+      `}
     }
   }
   p {

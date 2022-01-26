@@ -1,31 +1,31 @@
 const colors = [
   {
-    id: "red",
-    select: false,
+    id: "0",
+    select: true,
     color: "#F50D5A",
   },
   {
-    id: "orange",
+    id: "1",
     select: false,
     color: "#FF865C",
   },
   {
-    id: "yellow",
+    id: "2",
     select: false,
     color: "#FFEA5C",
   },
   {
-    id: "green",
+    id: "3",
     select: false,
     color: "#00DA76",
   },
   {
-    id: "blue",
+    id: "4",
     select: false,
     color: "#0096CE",
   },
   {
-    id: "purple",
+    id: "5",
     select: false,
     color: "#800FFF",
   },
