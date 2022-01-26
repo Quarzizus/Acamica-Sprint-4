@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Header } from "../../components/Header";
 import { TweetArea } from "../../components/TweetArea";
+import { ListOfPhotoTweets } from "../../containers/ListOfTweets";
 import { AppContext } from "../../context/AppContext";
 import { HomePage } from "./styles";
 
@@ -12,6 +13,7 @@ const Home = () => {
     <HomePage>
       <Header />
       <TweetArea />
+      <ListOfPhotoTweets />
     </HomePage>
   );
 };
