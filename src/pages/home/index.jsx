@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { Header } from "../../components/Header";
+import { TweetArea } from "../../components/TweetArea";
 import { AppContext } from "../../context/AppContext";
 import { HomePage } from "./styles";
 
@@ -10,6 +11,7 @@ const Home = () => {
   return (
     <HomePage>
       <Header />
+      <TweetArea />
     </HomePage>
   );
 };

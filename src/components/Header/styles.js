@@ -1,13 +1,12 @@
 import styled from "styled-components";
 
 const HeaderComponent = styled.header`
-  background-color: black;
+  background-color: #250c23;
   height: 65px;
   width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
-  /* justify-content: space-between; */
   .Perfil {
     justify-self: start;
     grid-column: 1/2;
