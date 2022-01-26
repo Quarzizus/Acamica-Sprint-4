@@ -19,6 +19,7 @@ const Welcome = () => {
           type: "SET_COLOR",
           payload: box.color,
         });
+        localStorage.setItem("color", box.color);
         return box;
       } else {
         box.select = false;
