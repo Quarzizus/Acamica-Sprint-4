@@ -22,6 +22,14 @@ const UserNameComponent = styled.article`
     height: 4px;
     align-self: end;
   }
+  &.User {
+    height: 35px;
+
+    .UserNameText {
+      font-size: 1rem;
+      margin-top: 10px;
+    }
+  }
 `;
 
 export { UserNameComponent };

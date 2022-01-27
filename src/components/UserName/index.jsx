@@ -1,8 +1,8 @@
 import { UserNameComponent } from "./styles";
 
-const UserName = () => {
+const UserName = ({ className = "" }) => {
   return (
-    <UserNameComponent>
+    <UserNameComponent className={className}>
       <p className="UserNameText">UserName</p>
       <div></div>
     </UserNameComponent>
