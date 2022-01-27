@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const HeaderComponent = styled.header`
   background-color: #250c23;
@@ -7,21 +8,7 @@ const HeaderComponent = styled.header`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
-  .Perfil {
-    justify-self: start;
-    grid-column: 1/2;
-    margin-left: 15px;
-    border-radius: 50%;
-    background-color: orange;
-    display: flex;
-    align-items: center;
-    padding: 2px;
 
-    img {
-      border-radius: 50%;
-      width: 45px;
-    }
-  }
   .LogoSmall {
     justify-self: center;
     margin-top: -4px;
@@ -34,4 +21,26 @@ const HeaderComponent = styled.header`
   }
 `;
 
-export { HeaderComponent };
+const PhotoProfile = styled(Link)`
+  width: 45px;
+  border-radius: 50%;
+  background-color: red;
+  justify-self: start;
+  grid-column: 1/2;
+  margin-left: 15px;
+  background-color: orange;
+  .Perfil {
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+
+    img {
+      border-radius: 50%;
+      width: 45px;
+    }
+  }
+`;
+
+export { HeaderComponent, PhotoProfile };
