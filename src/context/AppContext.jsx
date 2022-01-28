@@ -2,20 +2,46 @@ import { createContext } from "react";
 import { AppReducer } from "../reducers";
 import { useReducer } from "react";
 import { getLocalStorage } from "../utils/getLocalStorage";
-
+import { getFirestore, onSnapshot, collection } from "firebase/firestore";
 const AppContext = createContext(null);
 
 const ContextProvider = ({ children }) => {
+  const db = getFirestore();
   const INITIAL_STATE = {
     uid: getLocalStorage("uid"),
-    loading: "",
-    error: "",
+    loading: true,
+    error: null,
     email: getLocalStorage("email"),
     color: getLocalStorage("color"),
     name: getLocalStorage("name"),
+    tweets: [],
   };
   const [state, dispatch] = useReducer(AppReducer, INITIAL_STATE);
-  const value = { state, dispatch };
+  const getTweetsWithSuscription = () => {
+    try {
+      dispatch({
+        type: "SET_LOADING",
+        payload: true,
+      });
+      onSnapshot(collection(db, "/tweets"), (docs) => {
+        const res = [];
+        docs.forEach((doc) => {
+          res.push(doc.data());
+        });
+        dispatch({
+          type: "GET_TWEETS",
+          payload: res,
+        });
+      });
+      dispatch({
+        type: "SET_LOADING",
+        payload: false,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const value = { state, dispatch, getTweetsWithSuscription };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };

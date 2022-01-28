@@ -11,7 +11,7 @@ import Favorite from "../../images/favorite.svg";
 import FavoriteSet from "../../images/favorite-set.svg";
 import { useState } from "react";
 
-const Tweet = () => {
+const Tweet = ({ content, date, followers, id, likes, parentId }) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
   const isFavoriteIcon = isFavorite ? FavoriteSet : Favorite;
@@ -24,16 +24,11 @@ const Tweet = () => {
       <HeaderTweet>
         <div className="Container_header">
           <UserName />
-          <p className="Header_date"> - 17 jun.</p>
+          <p className="Header_date"> - {date}.</p>
         </div>
         <img src={Delete} alt="" />
       </HeaderTweet>
-      <TweetContent>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Earum ea,
-        iusto velit repudiandae explicabo inventore quibusdam voluptatum in
-        itaque iste laboriosam repellat molestias consequatur debitis, ex
-        voluptatibus, nulla deserunt iure?
-      </TweetContent>
+      <TweetContent>{content}</TweetContent>
       <TweetFooter isFavorite={isFavorite}>
         <img
           src={isFavoriteIcon}
@@ -42,7 +37,7 @@ const Tweet = () => {
             setIsFavorite(!isFavorite);
           }}
         />
-        <p>100</p>
+        <p>{likes}</p>
       </TweetFooter>
     </TweetComponent>
   );

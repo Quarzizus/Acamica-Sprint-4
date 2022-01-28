@@ -9,6 +9,7 @@ const Home = () => {
   const {
     state: { email, name, color, uid },
   } = useContext(AppContext);
+
   return (
     <HomePage>
       <Header />

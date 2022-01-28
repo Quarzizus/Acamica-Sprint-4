@@ -1,14 +1,14 @@
 import { routes } from "../routes";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
 import { Auth } from "../pages/auth";
 import { NotFound } from "../components/NotFound";
-
 const App = () => {
   const {
     state: { uid },
   } = useContext(AppContext);
+
   return (
     <BrowserRouter>
       <div className="App">

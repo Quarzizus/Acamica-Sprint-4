@@ -5,6 +5,7 @@ const INITIAL_STATE = {
   email: "",
   color: "#F50D5A",
   name: "",
+  tweets: [],
 };
 
 const AppReducer = (state = INITIAL_STATE, action) => {
@@ -38,6 +39,11 @@ const AppReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         name: action.payload,
+      };
+    case "GET_TWEETS":
+      return {
+        ...state,
+        tweets: action.payload,
       };
     default:
       return state;
