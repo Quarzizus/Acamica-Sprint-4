@@ -6,7 +6,9 @@ import { Auth } from "../pages/auth";
 import { NotFound } from "../components/NotFound";
 const App = () => {
   const {
-    state: { uid },
+    state: {
+      userData: { uid },
+    },
   } = useContext(AppContext);
 
   return (

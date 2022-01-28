@@ -7,13 +7,18 @@ const AppContext = createContext(null);
 
 const ContextProvider = ({ children }) => {
   const db = getFirestore();
+
   const INITIAL_STATE = {
-    uid: getLocalStorage("uid"),
+    userData: {
+      uid: getLocalStorage("uid"),
+      email: getLocalStorage("email"),
+      color: getLocalStorage("color"),
+      name: getLocalStorage("name"),
+      username: getLocalStorage("username"),
+      photo: getLocalStorage("photo"),
+    },
     loading: true,
     error: null,
-    email: getLocalStorage("email"),
-    color: getLocalStorage("color"),
-    name: getLocalStorage("name"),
     tweets: [],
   };
   const [state, dispatch] = useReducer(AppReducer, INITIAL_STATE);

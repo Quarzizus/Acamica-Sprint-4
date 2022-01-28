@@ -7,7 +7,9 @@ import { HomePage } from "./styles";
 
 const Home = () => {
   const {
-    state: { email, name, color, uid },
+    state: {
+      userData: { email, name, color, uid },
+    },
   } = useContext(AppContext);
 
   return (

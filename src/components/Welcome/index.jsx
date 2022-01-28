@@ -7,7 +7,9 @@ import { Link } from "react-router-dom";
 
 const Welcome = () => {
   const {
-    state: { name, color },
+    state: {
+      userData: { name, color },
+    },
     dispatch,
   } = useContext(AppContext);
   const [colorsInfo, setColorsInfo] = useState(colors);

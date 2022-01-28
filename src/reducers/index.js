@@ -1,19 +1,23 @@
 const INITIAL_STATE = {
-  uid: "",
+  userData: {
+    uid: "",
+    email: "",
+    color: "#F50D5A",
+    name: "",
+    username: "",
+    photo: "",
+  },
   loading: "",
   error: "",
-  email: "",
-  color: "#F50D5A",
-  name: "",
   tweets: [],
 };
 
 const AppReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case "SET_UID":
+    case "SET_USERDATA":
       return {
         ...state,
-        uid: action.payload,
+        userData: action.payload,
       };
     case "SET_LOADING":
       return {
@@ -28,18 +32,20 @@ const AppReducer = (state = INITIAL_STATE, action) => {
     case "SET_COLOR":
       return {
         ...state,
-        color: action.payload,
+        userData: {
+          ...state.userData,
+          color: action.payload,
+        },
       };
-    case "SET_EMAIL":
+    case "SET_USERNAME":
       return {
         ...state,
-        email: action.payload,
+        userData: {
+          ...state.userData,
+          username: action.payload,
+        },
       };
-    case "SET_NAME":
-      return {
-        ...state,
-        name: action.payload,
-      };
+
     case "GET_TWEETS":
       return {
         ...state,

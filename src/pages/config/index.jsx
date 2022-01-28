@@ -6,7 +6,9 @@ import { Welcome } from "../../components/Welcome";
 
 const Config = () => {
   const {
-    state: { name, uid, email },
+    state: {
+      userData: { name, uid },
+    },
   } = useContext(AppContext);
 
   return (

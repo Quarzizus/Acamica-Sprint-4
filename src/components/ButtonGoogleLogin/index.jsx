@@ -13,21 +13,20 @@ const ButtonGoogleLogin = () => {
   const handleAuth = async () => {
     try {
       await signInWithPopup(auth, provider).then((data) => {
+        const userData = {
+          uid: data.user.uid,
+          email: data.user.email,
+          name: data.user.displayName,
+          photo: data.user.photoURL,
+        };
         dispatch({
-          type: "SET_UID",
-          payload: data.user.uid,
+          type: "SET_USERDATA",
+          payload: userData,
         });
         localStorage.setItem("uid", data.user.uid);
-        dispatch({
-          type: "SET_EMAIL",
-          payload: data.user.email,
-        });
         localStorage.setItem("email", data.user.email);
-        dispatch({
-          type: "SET_NAME",
-          payload: data.user.displayName,
-        });
         localStorage.setItem("name", data.user.displayName);
+        localStorage.setItem("name", data.user.photoURL);
       });
       navigate("/config");
     } catch (error) {
