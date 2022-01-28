@@ -22,8 +22,9 @@ const TweetArea = ({ photo, parentId, color, username }) => {
 
   const handleSubmit = async () => {
     try {
+      if (!tweetContent.length) return;
       await setDoc(reference, tweetBody);
-      console.log(tweetBody);
+      setTweetContent("");
     } catch (error) {
       console.log(error);
     }
@@ -40,6 +41,12 @@ const TweetArea = ({ photo, parentId, color, username }) => {
           maxLength={200}
           onChange={(e) => {
             setTweetContent(e.target.value);
+          }}
+          onKeyPress={(e) => {
+            if (e.key === "Enter") {
+              e.preventDefault();
+              handleSubmit();
+            }
           }}
         ></textarea>
         <div
