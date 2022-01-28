@@ -9,7 +9,7 @@ const AuthPage = styled.section`
   justify-items: center;
   align-items: center;
 
-  @media screen and (max-width: 720px) {
+  @media screen and (max-width: 822px) {
     grid-template-columns: 1fr;
   }
 `;

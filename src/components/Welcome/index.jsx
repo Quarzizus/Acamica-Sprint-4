@@ -1,4 +1,4 @@
-import { WelcomeComponent } from "./styles";
+import { WelcomeComponent, InputUserName } from "./styles";
 import { Box } from "../Box";
 import { useContext, useState } from "react";
 import { AppContext } from "../../context/AppContext";
@@ -8,12 +8,12 @@ import { Link } from "react-router-dom";
 const Welcome = () => {
   const {
     state: {
-      userData: { name, color },
+      userData: { color },
     },
     dispatch,
   } = useContext(AppContext);
   const [colorsInfo, setColorsInfo] = useState(colors);
-
+  const [username, setUsername] = useState("");
   const handleSelect = (id) => {
     const newColors = colors.map((box) => {
       if (box.id === id) {
@@ -37,15 +37,30 @@ const Welcome = () => {
       <h2>
         Welcome
         <br />
-        <span>{name}!</span>
+        <span>{username}!</span>
       </h2>
+      <InputUserName
+        type="text"
+        placeholder="Type your username"
+        onChange={(e) => {
+          setUsername(e.target.value);
+        }}
+      />
       <p>Select your favorite</p>
       <section>
         {colorsInfo.map((box) => {
           return <Box key={box.id} handleSelect={handleSelect} {...box} />;
         })}
       </section>
-      <Link to="/home">
+      <Link
+        to="/home"
+        onClick={() => {
+          dispatch({
+            type: "SET_USERNAME",
+            payload: username,
+          });
+        }}
+      >
         <button>CONTINUE</button>
       </Link>
     </WelcomeComponent>

@@ -8,14 +8,14 @@ import { HomePage } from "./styles";
 const Home = () => {
   const {
     state: {
-      userData: { email, name, color, uid },
+      userData: { username, photo },
     },
   } = useContext(AppContext);
 
   return (
     <HomePage>
-      <Header />
-      <TweetArea />
+      <Header photo={photo} username={username} />
+      <TweetArea photo={photo} />
       <ListOfPhotoTweets />
     </HomePage>
   );

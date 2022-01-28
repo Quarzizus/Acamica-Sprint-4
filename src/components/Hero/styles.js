@@ -21,7 +21,7 @@ const HeroComponent = styled.section`
     line-height: 30px;
     font-size: 1.2rem;
   }
-  @media screen and (max-width: 720px) {
+  @media screen and (max-width: 822px) {
     grid-column: 1/2;
     h1 {
       font-size: 1.2em;

@@ -3,12 +3,12 @@ import Title from "../../images/title.svg";
 import LogoSmall from "../../images/logo-small.svg";
 import Perfil from "../../images/perfil.png";
 
-const Header = () => {
+const Header = ({ photo }) => {
   return (
     <HeaderComponent>
       <PhotoProfile to="/profile">
         <picture className="Perfil">
-          <img src={Perfil} alt="" />
+          <img src={photo} alt="" />
         </picture>
       </PhotoProfile>
       <img src={LogoSmall} alt="" className="LogoSmall" />

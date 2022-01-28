@@ -41,7 +41,7 @@ const WelcomeComponent = styled.section`
     height: 58px;
     margin-bottom: 10px;
   }
-  @media screen and (max-width: 720px) {
+  @media screen and (max-width: 822px) {
     grid-column: 1/2;
     h2 {
       font-size: 1.2em;
@@ -52,4 +52,23 @@ const WelcomeComponent = styled.section`
   }
 `;
 
-export { WelcomeComponent };
+const InputUserName = styled.input`
+  background-color: #150714;
+  width: 100%;
+  height: 53px;
+  color: white;
+  border: none;
+  font-family: "Fira Code", monospace;
+  padding: 0 20px;
+  font-size: 1.2rem;
+  &:focus {
+    outline: 1px solid #2e132c;
+    border: 1px solid white;
+  }
+  &::placeholder {
+    color: #2e132c;
+    font-weight: bold;
+  }
+`;
+
+export { WelcomeComponent, InputUserName };

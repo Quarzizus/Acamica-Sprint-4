@@ -26,7 +26,7 @@ const ButtonGoogleLogin = () => {
         localStorage.setItem("uid", data.user.uid);
         localStorage.setItem("email", data.user.email);
         localStorage.setItem("name", data.user.displayName);
-        localStorage.setItem("name", data.user.photoURL);
+        localStorage.setItem("photo", data.user.photoURL);
       });
       navigate("/config");
     } catch (error) {
