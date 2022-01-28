@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const UserComponent = styled.section`
   height: 280px;
@@ -11,7 +11,9 @@ const UserComponent = styled.section`
     align-items: center;
     justify-content: space-evenly;
     picture {
-      background-color: orange;
+      ${({ color }) => css`
+        background-color: ${color};
+      `}
       height: 135px;
       width: 135px;
       border-radius: 50%;

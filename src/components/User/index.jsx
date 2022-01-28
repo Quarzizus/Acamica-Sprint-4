@@ -2,7 +2,7 @@ import { FooterUser, UserComponent } from "./styles";
 import Perfil from "../../images/perfil.png";
 import { UserName } from "../UserName";
 
-const User = () => {
+const User = ({ photo, color, username }) => {
   const handleChangeBg = (node, sibling) => {
     sibling.classList.remove("Active");
     sibling.classList.add("NoActive");
@@ -11,12 +11,12 @@ const User = () => {
   };
 
   return (
-    <UserComponent>
+    <UserComponent color={color}>
       <div className="User_container">
         <picture>
-          <img src={Perfil} alt="" />
+          <img src={photo} alt="" />
         </picture>
-        <UserName className="User" />
+        <UserName className="User" username={username} />
       </div>
       <FooterUser>
         <button

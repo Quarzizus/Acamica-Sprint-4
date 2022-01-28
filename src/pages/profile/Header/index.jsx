@@ -4,7 +4,7 @@ import LogoutIcon from "../../../images/logout.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { signOut, getAuth } from "firebase/auth";
 
-const HeaderProfile = () => {
+const HeaderProfile = ({ username }) => {
   const auth = getAuth();
   const navigate = useNavigate();
   const handleLogout = async () => {
@@ -23,7 +23,7 @@ const HeaderProfile = () => {
         <Link to="/home">
           <img src={BackIcon} alt="" />
         </Link>
-        <p>USERNAME</p>
+        <p>{username}</p>
       </div>
       <ButtonLogout onClick={handleLogout}>
         LOGOUT
