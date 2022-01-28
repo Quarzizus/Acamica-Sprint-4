@@ -16,7 +16,7 @@ const User = ({ photo, color, username }) => {
         <picture>
           <img src={photo} alt="" />
         </picture>
-        <UserName className="User" username={username} />
+        <UserName className="User" username={username} color={color} />
       </div>
       <FooterUser>
         <button

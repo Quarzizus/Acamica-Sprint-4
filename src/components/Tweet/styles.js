@@ -6,7 +6,8 @@ const TweetComponent = styled.article`
   grid-template-rows: 40px 1fr 50px;
   gap: 15px;
   border-bottom: 1px solid #f50d5a;
-  padding: 0 15px;
+  padding: 0 15px 15px 15px;
+  margin-top: 25px;
   picture {
     grid-row: 1/-1;
     grid-column: 1/2;

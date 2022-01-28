@@ -59,6 +59,7 @@ const Welcome = () => {
             type: "SET_USERNAME",
             payload: username,
           });
+          localStorage.setItem("username", username);
         }}
       >
         <button>CONTINUE</button>

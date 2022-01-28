@@ -1,7 +1,9 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const UserNameComponent = styled.article`
-  background-color: #ffea5c;
+  ${({ color }) => css`
+    background-color: ${color};
+  `}
   display: grid;
   padding-right: 7px;
   height: 25px;

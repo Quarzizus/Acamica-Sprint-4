@@ -35,7 +35,7 @@ const ContextProvider = ({ children }) => {
         });
         dispatch({
           type: "GET_TWEETS",
-          payload: res,
+          payload: res.reverse(),
         });
       });
       dispatch({

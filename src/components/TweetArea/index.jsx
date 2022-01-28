@@ -1,9 +1,33 @@
 import { TweetAreaComponent, TweekInfo, ButtonPost } from "./styles";
-import Perfil from "../../images/perfil.png";
+// import Perfil from "../../images/perfil.png";
 import { useState } from "react";
+import { collection, doc, getFirestore, setDoc } from "firebase/firestore";
 
-const TweetArea = ({ photo }) => {
+const TweetArea = ({ photo, parentId, color, username }) => {
+  const db = getFirestore();
   const [tweetContent, setTweetContent] = useState("");
+  const [reference, setReference] = useState(doc(collection(db, "tweets")));
+  const [date, seDate] = useState(() => new Date().toDateString().slice(4, 10));
+  const tweetBody = {
+    content: tweetContent,
+    parentId: parentId,
+    followers: [],
+    likes: 0,
+    id: reference.id,
+    date: date,
+    parentPhoto: photo,
+    color: color,
+    username: username,
+  };
+
+  const handleSubmit = async () => {
+    try {
+      await setDoc(reference, tweetBody);
+      console.log(tweetBody);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <TweetAreaComponent tweetContentLength={tweetContent.length}>
@@ -28,7 +52,7 @@ const TweetArea = ({ photo }) => {
         <p className="Tweet_characteres">{tweetContent.length}</p>
         <p className="Tweet_maxlength">200 max.</p>
       </TweekInfo>
-      <ButtonPost>POST</ButtonPost>
+      <ButtonPost onClick={handleSubmit}>POST</ButtonPost>
     </TweetAreaComponent>
   );
 };
