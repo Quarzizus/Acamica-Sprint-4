@@ -3,6 +3,8 @@ import {
   TweetComponent,
   TweetContent,
   TweetFooter,
+  DeleteButton,
+  LikeButton,
 } from "./styles";
 import Favorite from "../../images/favorite.svg";
 import FavoriteSet from "../../images/favorite-set.svg";
@@ -22,13 +24,17 @@ const Tweet = ({
   color,
   username,
 }) => {
-  const [isFavorite, setIsFavorite] = useState(false);
   const {
     state: {
       userData: { uid },
     },
   } = useContext(AppContext);
+  const [isFavorite, setIsFavorite] = useState(() => {
+    return followers.some((follower) => follower === uid);
+  });
   const isFavoriteIcon = isFavorite ? FavoriteSet : Favorite;
+
+  const handleLikeTweet = () => {};
 
   return (
     <TweetComponent>
@@ -40,19 +46,23 @@ const Tweet = ({
           <UserName color={color} username={username} />
           <p className="Header_date"> - {date}.</p>
         </div>
-        {console.log(uid, parentId)}
-        {uid === parentId && <img src={Delete} alt="" />}
+        {uid === parentId && (
+          <DeleteButton>
+            <img src={Delete} alt="" />
+          </DeleteButton>
+        )}
       </HeaderTweet>
       <TweetContent>{content}</TweetContent>
       <TweetFooter isFavorite={isFavorite}>
-        <img
-          src={isFavoriteIcon}
-          alt=""
+        <LikeButton
           onClick={() => {
+            handleLikeTweet();
             setIsFavorite(!isFavorite);
           }}
-        />
-        <p>{likes}</p>
+        >
+          <img src={isFavoriteIcon} alt="" />
+        </LikeButton>
+        <p>{followers.length}</p>
       </TweetFooter>
     </TweetComponent>
   );

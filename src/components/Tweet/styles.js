@@ -51,6 +51,7 @@ const TweetFooter = styled.footer`
   align-items: center;
   img {
     width: 25px;
+    cursor: pointer;
   }
   p {
     margin-left: 10px;
@@ -66,4 +67,19 @@ const TweetFooter = styled.footer`
   }
 `;
 
-export { TweetComponent, HeaderTweet, TweetContent, TweetFooter };
+const DeleteButton = styled.button`
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+`;
+
+const LikeButton = styled(DeleteButton)``;
+
+export {
+  TweetComponent,
+  HeaderTweet,
+  TweetContent,
+  TweetFooter,
+  DeleteButton,
+  LikeButton,
+};
