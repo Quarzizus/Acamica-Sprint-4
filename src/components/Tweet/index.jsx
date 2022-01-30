@@ -13,28 +13,43 @@ import Delete from "../../images/delete.svg";
 import { UserName } from "../UserName";
 import { useContext, useState } from "react";
 import { AppContext } from "../../context/AppContext";
+import { doc, getFirestore, updateDoc } from "firebase/firestore";
 
 const Tweet = ({
   content,
   date,
   followers,
-  likes,
   parentPhoto,
   parentId,
   color,
   username,
+  id,
 }) => {
   const {
     state: {
       userData: { uid },
     },
   } = useContext(AppContext);
+  const db = getFirestore();
   const [isFavorite, setIsFavorite] = useState(() => {
     return followers.some((follower) => follower === uid);
   });
   const isFavoriteIcon = isFavorite ? FavoriteSet : Favorite;
 
-  const handleLikeTweet = () => {};
+  const handleToogleLike = async () => {
+    const reference = doc(db, "tweets", id);
+    const isMyFavorite = followers.some((follower) => follower === uid);
+    if (isMyFavorite) {
+      const [uid, ...rest] = followers;
+      await updateDoc(reference, {
+        followers: [...rest],
+      });
+    } else {
+      await updateDoc(reference, {
+        followers: [...followers, uid],
+      });
+    }
+  };
 
   return (
     <TweetComponent>
@@ -56,7 +71,7 @@ const Tweet = ({
       <TweetFooter isFavorite={isFavorite}>
         <LikeButton
           onClick={() => {
-            handleLikeTweet();
+            handleToogleLike();
             setIsFavorite(!isFavorite);
           }}
         >
