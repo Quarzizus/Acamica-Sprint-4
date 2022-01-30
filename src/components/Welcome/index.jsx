@@ -4,25 +4,38 @@ import { useContext, useState } from "react";
 import { AppContext } from "../../context/AppContext";
 import { colors } from "../Box/utils/colors";
 import { Link } from "react-router-dom";
+import {
+  doc,
+  getDoc,
+  getFirestore,
+  updateDoc,
+  collection,
+} from "firebase/firestore";
 
 const Welcome = () => {
   const {
     state: {
-      userData: { color },
+      userData: { uid },
     },
-    dispatch,
   } = useContext(AppContext);
   const [colorsInfo, setColorsInfo] = useState(colors);
   const [username, setUsername] = useState("");
+  const [color, setColor] = useState("#F50D5A");
+  const db = getFirestore();
+
+  const handleSubmit = async () => {
+    const reference = doc(db, "users", uid);
+    await updateDoc(reference, {
+      color: color,
+      username: username,
+    });
+  };
+
   const handleSelect = (id) => {
     const newColors = colors.map((box) => {
       if (box.id === id) {
         box.select = true;
-        dispatch({
-          type: "SET_COLOR",
-          payload: box.color,
-        });
-        localStorage.setItem("color", box.color);
+        setColor(box.color);
         return box;
       } else {
         box.select = false;
@@ -52,16 +65,7 @@ const Welcome = () => {
           return <Box key={box.id} handleSelect={handleSelect} {...box} />;
         })}
       </section>
-      <Link
-        to="/home"
-        onClick={() => {
-          dispatch({
-            type: "SET_USERNAME",
-            payload: username,
-          });
-          localStorage.setItem("username", username);
-        }}
-      >
+      <Link to="/home" onClick={handleSubmit}>
         <button>CONTINUE</button>
       </Link>
     </WelcomeComponent>

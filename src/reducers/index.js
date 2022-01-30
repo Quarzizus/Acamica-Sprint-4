@@ -1,11 +1,11 @@
 const INITIAL_STATE = {
   userData: {
-    uid: "",
-    email: "",
     color: "#F50D5A",
-    name: "",
-    username: "",
+    email: "",
     photo: "",
+    uid: "",
+    username: "",
+    name: "",
   },
   loading: "",
   error: "",
@@ -17,7 +17,7 @@ const AppReducer = (state = INITIAL_STATE, action) => {
     case "SET_USERDATA":
       return {
         ...state,
-        userData: action.payload,
+        userData: { ...state.userData, ...action.payload },
       };
     case "SET_LOADING":
       return {

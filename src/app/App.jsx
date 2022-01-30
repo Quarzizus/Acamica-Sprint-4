@@ -1,5 +1,5 @@
 import { routes } from "../routes";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
 import { Auth } from "../pages/auth";

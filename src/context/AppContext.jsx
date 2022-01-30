@@ -1,8 +1,14 @@
-import { createContext } from "react";
+import { createContext, useEffect } from "react";
 import { AppReducer } from "../reducers";
 import { useReducer } from "react";
 import { getLocalStorage } from "../utils/getLocalStorage";
-import { getFirestore, onSnapshot, collection } from "firebase/firestore";
+import {
+  getFirestore,
+  onSnapshot,
+  collection,
+  doc,
+  getDoc,
+} from "firebase/firestore";
 const AppContext = createContext(null);
 
 const ContextProvider = ({ children }) => {
@@ -10,12 +16,12 @@ const ContextProvider = ({ children }) => {
 
   const INITIAL_STATE = {
     userData: {
+      color: "",
+      email: "",
+      photo: "",
       uid: getLocalStorage("uid"),
-      email: getLocalStorage("email"),
-      color: getLocalStorage("color"),
-      name: getLocalStorage("name"),
-      username: getLocalStorage("username"),
-      photo: getLocalStorage("photo"),
+      username: "",
+      name: "",
     },
     loading: true,
     error: null,
@@ -46,7 +52,16 @@ const ContextProvider = ({ children }) => {
       console.log(error);
     }
   };
-  const value = { state, dispatch, getTweetsWithSuscription };
+  const getUserData = async (uid) => {
+    const reference = doc(db, "users", uid);
+    const userData = await getDoc(reference);
+    dispatch({
+      type: "SET_USERDATA",
+      payload: userData.data(),
+    });
+  };
+
+  const value = { state, dispatch, getTweetsWithSuscription, getUserData };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };

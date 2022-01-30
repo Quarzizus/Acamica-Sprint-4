@@ -27,7 +27,6 @@ const Tweet = ({
 
   return (
     <TweetComponent>
-      {console.log(username)}
       <picture>
         <img src={parentPhoto ? parentPhoto : Perfil} alt="" />
       </picture>

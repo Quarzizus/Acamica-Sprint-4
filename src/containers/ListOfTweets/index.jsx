@@ -5,13 +5,19 @@ import { ListOfPhotoTweetsContainer } from "./styles";
 
 const ListOfPhotoTweets = () => {
   const {
-    state: { tweets, loading },
+    state: {
+      tweets,
+      loading,
+      userData: { uid },
+    },
     getTweetsWithSuscription,
+    getUserData,
   } = useContext(AppContext);
 
   useEffect(() => {
     getTweetsWithSuscription();
-  }, []);
+    getUserData(uid);
+  }, [uid]);
 
   return (
     <ListOfPhotoTweetsContainer>
