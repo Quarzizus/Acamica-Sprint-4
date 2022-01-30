@@ -11,13 +11,11 @@ const ListOfPhotoTweets = () => {
       userData: { uid },
     },
     getTweetsWithSuscription,
-    getUserData,
   } = useContext(AppContext);
 
   useEffect(() => {
     getTweetsWithSuscription();
-    getUserData(uid);
-  }, [uid]);
+  }, []);
 
   return (
     <ListOfPhotoTweetsContainer>

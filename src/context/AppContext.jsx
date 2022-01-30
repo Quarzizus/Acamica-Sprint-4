@@ -55,6 +55,7 @@ const ContextProvider = ({ children }) => {
   const getUserData = async (uid) => {
     const reference = doc(db, "users", uid);
     const userData = await getDoc(reference);
+
     dispatch({
       type: "SET_USERDATA",
       payload: userData.data(),

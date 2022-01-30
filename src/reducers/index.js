@@ -45,11 +45,23 @@ const AppReducer = (state = INITIAL_STATE, action) => {
           username: action.payload,
         },
       };
-
     case "GET_TWEETS":
       return {
         ...state,
         tweets: action.payload,
+      };
+    case "DELETE_USERDATA":
+      return {
+        ...state,
+        userData: INITIAL_STATE.userData,
+      };
+    case "SET_UID":
+      return {
+        ...state,
+        userData: {
+          ...state.userData,
+          uid: action.payload,
+        },
       };
     default:
       return state;

@@ -21,13 +21,23 @@ const ButtonGoogleLogin = () => {
       photo: data.user.photoURL,
     };
     localStorage.setItem("uid", data.user.uid);
+    dispatch({
+      type: "SET_UID",
+      payload: data.user.uid,
+    });
     setDoc(doc(db, "users", data.user.uid), userData);
     navigate("/config");
   };
   const redirectHome = async (uid) => {
     const reference = doc(db, "users", uid);
     const response = await getDoc(reference);
-    response.exists() && localStorage.setItem("uid", uid);
+    if (response.exists()) {
+      localStorage.setItem("uid", uid);
+      dispatch({
+        type: "SET_UID",
+        payload: uid,
+      });
+    }
     return response.exists();
   };
 

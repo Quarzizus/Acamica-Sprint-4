@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Header } from "../../components/Header";
 import { TweetArea } from "../../components/TweetArea";
 import { ListOfPhotoTweets } from "../../containers/ListOfTweets";
@@ -10,7 +10,12 @@ const Home = () => {
     state: {
       userData: { username, photo, uid, color },
     },
+    getUserData,
   } = useContext(AppContext);
+
+  useEffect(() => {
+    getUserData(uid);
+  }, [uid]);
 
   return (
     <HomePage>

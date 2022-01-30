@@ -42,6 +42,7 @@ const TweetArea = ({ photo, parentId, color, username }) => {
           onChange={(e) => {
             setTweetContent(e.target.value);
           }}
+          value={tweetContent}
           onKeyPress={(e) => {
             if (e.key === "Enter") {
               e.preventDefault();
