@@ -10,6 +10,8 @@ const INITIAL_STATE = {
   loading: "",
   error: "",
   tweets: [],
+  open: false,
+  tweetForDelete: "",
 };
 
 const AppReducer = (state = INITIAL_STATE, action) => {
@@ -62,6 +64,16 @@ const AppReducer = (state = INITIAL_STATE, action) => {
           ...state.userData,
           uid: action.payload,
         },
+      };
+    case "SET_OPEN":
+      return {
+        ...state,
+        open: action.payload,
+      };
+    case "SET_TWEET_FOR_DELETE":
+      return {
+        ...state,
+        tweetForDelete: action.payload,
       };
     default:
       return state;

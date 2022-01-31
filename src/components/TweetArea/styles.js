@@ -62,7 +62,7 @@ const TweekInfo = styled.section`
 `;
 
 const ButtonPost = styled.button`
-  background-color: #2f112d;
+  background-color: #00da76;
   color: black;
   border: none;
   font-family: "Press Start 2P", cursive;

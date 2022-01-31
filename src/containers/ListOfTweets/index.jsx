@@ -1,4 +1,5 @@
 import { useContext, useEffect } from "react";
+import { ConfirmationModal } from "../../components/ConfirmationModal";
 import { IsEmpty } from "../../components/IsEmpty";
 import { IsLoading } from "../../components/IsLoading";
 import { Tweet } from "../../components/Tweet";
@@ -7,10 +8,7 @@ import { ListOfPhotoTweetsContainer } from "./styles";
 
 const ListOfPhotoTweets = ({ tweets }) => {
   const {
-    state: {
-      loading,
-      userData: { uid },
-    },
+    state: { loading, open },
     getTweetsWithSuscription,
   } = useContext(AppContext);
 
@@ -27,6 +25,7 @@ const ListOfPhotoTweets = ({ tweets }) => {
         tweets.map((tweet) => {
           return <Tweet key={tweet.id} {...tweet} />;
         })}
+      {open && <ConfirmationModal />}
     </ListOfPhotoTweetsContainer>
   );
 };

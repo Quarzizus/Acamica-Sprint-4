@@ -1,5 +1,4 @@
 import { TweetAreaComponent, TweekInfo, ButtonPost } from "./styles";
-// import Perfil from "../../images/perfil.png";
 import { useState } from "react";
 import { collection, doc, getFirestore, setDoc } from "firebase/firestore";
 

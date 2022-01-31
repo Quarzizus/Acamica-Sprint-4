@@ -13,7 +13,7 @@ import Delete from "../../images/delete.svg";
 import { UserName } from "../UserName";
 import { useContext, useState } from "react";
 import { AppContext } from "../../context/AppContext";
-import { doc, getFirestore, updateDoc } from "firebase/firestore";
+import { handleToogleLike } from "../../controllers/handleToogleLike";
 
 const Tweet = ({
   content,
@@ -29,26 +29,16 @@ const Tweet = ({
     state: {
       userData: { uid },
     },
+    dispatch,
   } = useContext(AppContext);
-  const db = getFirestore();
   const [isFavorite, setIsFavorite] = useState(() => {
     return followers.some((follower) => follower === uid);
   });
   const isFavoriteIcon = isFavorite ? FavoriteSet : Favorite;
 
-  const handleToogleLike = async () => {
-    const reference = doc(db, "tweets", id);
-    const isMyFavorite = followers.some((follower) => follower === uid);
-    if (isMyFavorite) {
-      const [uid, ...rest] = followers;
-      await updateDoc(reference, {
-        followers: [...rest],
-      });
-    } else {
-      await updateDoc(reference, {
-        followers: [...followers, uid],
-      });
-    }
+  const handleOpenModal = (tweetId) => {
+    dispatch({ type: "SET_TWEET_FOR_DELETE", payload: tweetId });
+    dispatch({ type: "SET_OPEN", payload: true });
   };
 
   return (
@@ -62,7 +52,7 @@ const Tweet = ({
           <p className="Header_date"> - {date}.</p>
         </div>
         {uid === parentId && (
-          <DeleteButton>
+          <DeleteButton onClick={() => handleOpenModal(id)}>
             <img src={Delete} alt="" />
           </DeleteButton>
         )}
@@ -71,7 +61,7 @@ const Tweet = ({
       <TweetFooter isFavorite={isFavorite}>
         <LikeButton
           onClick={() => {
-            handleToogleLike();
+            handleToogleLike(id, uid, followers);
             setIsFavorite(!isFavorite);
           }}
         >
