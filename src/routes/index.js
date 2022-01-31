@@ -11,7 +11,7 @@ const routes = [
     Component: Home,
   },
   {
-    path: "/profile",
+    path: "/profile/*",
     Component: Profile,
   },
 ];

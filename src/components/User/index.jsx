@@ -1,8 +1,10 @@
 import { FooterUser, UserComponent } from "./styles";
 import Perfil from "../../images/perfil.png";
 import { UserName } from "../UserName";
+import { useNavigate } from "react-router-dom";
 
 const User = ({ photo, color, username }) => {
+  const navigate = useNavigate();
   const handleChangeBg = (node, sibling) => {
     sibling.classList.remove("Active");
     sibling.classList.add("NoActive");
@@ -23,6 +25,7 @@ const User = ({ photo, color, username }) => {
           className="Active"
           onClick={(e) => {
             handleChangeBg(e.target, e.target.nextSibling);
+            navigate("/profile/posts");
           }}
         >
           POSTS
@@ -31,6 +34,7 @@ const User = ({ photo, color, username }) => {
           className="NoActive"
           onClick={(e) => {
             handleChangeBg(e.target, e.target.previousSibling);
+            navigate("/profile/favorites");
           }}
         >
           FAVORITES

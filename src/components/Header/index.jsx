@@ -6,7 +6,7 @@ import Perfil from "../../images/perfil.png";
 const Header = ({ photo }) => {
   return (
     <HeaderComponent>
-      <PhotoProfile to="/profile">
+      <PhotoProfile to="/profile/posts">
         <picture className="Perfil">
           <img src={photo} alt="" />
         </picture>

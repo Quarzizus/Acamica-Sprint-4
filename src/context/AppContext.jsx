@@ -44,12 +44,13 @@ const ContextProvider = ({ children }) => {
           payload: res.reverse(),
         });
       });
+    } catch (error) {
+      console.log(error);
+    } finally {
       dispatch({
         type: "SET_LOADING",
         payload: false,
       });
-    } catch (error) {
-      console.log(error);
     }
   };
   const getUserData = async (uid) => {

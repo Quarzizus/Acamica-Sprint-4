@@ -8,6 +8,7 @@ import { HomePage } from "./styles";
 const Home = () => {
   const {
     state: {
+      tweets,
       userData: { username, photo, uid, color },
     },
     getUserData,
@@ -26,7 +27,7 @@ const Home = () => {
         username={username}
         color={color}
       />
-      <ListOfPhotoTweets />
+      <ListOfPhotoTweets tweets={tweets} />
     </HomePage>
   );
 };

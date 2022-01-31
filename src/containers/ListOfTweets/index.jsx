@@ -1,12 +1,13 @@
 import { useContext, useEffect } from "react";
+import { IsEmpty } from "../../components/IsEmpty";
+import { IsLoading } from "../../components/IsLoading";
 import { Tweet } from "../../components/Tweet";
 import { AppContext } from "../../context/AppContext";
 import { ListOfPhotoTweetsContainer } from "./styles";
 
-const ListOfPhotoTweets = () => {
+const ListOfPhotoTweets = ({ tweets }) => {
   const {
     state: {
-      tweets,
       loading,
       userData: { uid },
     },
@@ -19,9 +20,9 @@ const ListOfPhotoTweets = () => {
 
   return (
     <ListOfPhotoTweetsContainer>
-      {loading && <h2>Loading...</h2>}
-      {!tweets.length && !loading && <h1>No hay</h1>}
-      {tweets.length &&
+      {loading && <IsLoading message="Loading" />}
+      {!tweets.length && !loading && <IsEmpty message="Empty" />}
+      {tweets.length > 0 &&
         !loading &&
         tweets.map((tweet) => {
           return <Tweet key={tweet.id} {...tweet} />;
