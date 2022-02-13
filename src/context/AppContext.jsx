@@ -1,4 +1,4 @@
-import { createContext, useEffect } from "react";
+import { createContext } from "react";
 import { AppReducer } from "../reducers";
 import { useReducer } from "react";
 import { getLocalStorage } from "../utils/getLocalStorage";

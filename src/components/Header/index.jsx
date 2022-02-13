@@ -1,7 +1,7 @@
 import { HeaderComponent, PhotoProfile } from "./styles";
 import Title from "../../images/title.svg";
 import LogoSmall from "../../images/logo-small.svg";
-import Perfil from "../../images/perfil.png";
+// import Perfil from "../../images/perfil.png";
 
 const Header = ({ photo }) => {
   return (

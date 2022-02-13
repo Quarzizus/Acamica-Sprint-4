@@ -5,8 +5,8 @@ import { collection, doc, getFirestore, setDoc } from "firebase/firestore";
 const TweetArea = ({ photo, parentId, color, username }) => {
   const db = getFirestore();
   const [tweetContent, setTweetContent] = useState("");
-  const [reference, setReference] = useState(doc(collection(db, "tweets")));
-  const [date, seDate] = useState(() => new Date().toDateString().slice(4, 10));
+  const [reference] = useState(doc(collection(db, "tweets")));
+  const [date] = useState(() => new Date().toDateString().slice(4, 10));
   const tweetBody = {
     content: tweetContent,
     parentId: parentId,

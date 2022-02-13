@@ -4,13 +4,7 @@ import { useContext, useState } from "react";
 import { AppContext } from "../../context/AppContext";
 import { colors } from "../Box/utils/colors";
 import { Link } from "react-router-dom";
-import {
-  doc,
-  getDoc,
-  getFirestore,
-  updateDoc,
-  collection,
-} from "firebase/firestore";
+import { doc, getFirestore, updateDoc } from "firebase/firestore";
 
 const Welcome = () => {
   const {

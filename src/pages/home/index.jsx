@@ -16,7 +16,7 @@ const Home = () => {
 
   useEffect(() => {
     getUserData(uid);
-  }, [uid]);
+  }, [getUserData, uid]);
 
   return (
     <HomePage>

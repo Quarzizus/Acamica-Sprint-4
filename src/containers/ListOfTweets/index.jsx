@@ -14,7 +14,7 @@ const ListOfPhotoTweets = ({ tweets }) => {
 
   useEffect(() => {
     getTweetsWithSuscription();
-  }, []);
+  }, [getTweetsWithSuscription]);
 
   return (
     <ListOfPhotoTweetsContainer>

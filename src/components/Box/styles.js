@@ -7,7 +7,7 @@ const BoxComponent = styled.article`
     `;
   }}
   ${({ select }) =>
-    select == true
+    select === true
       ? css`
           border: 3px solid white;
         `
