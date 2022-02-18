@@ -14,8 +14,7 @@ You can look of design and to compare with the result.
 
 ## Page
 
-https://quarzizusdevsunited.web.app
-
+https://quarzizusdevsunited.firebaseapp.com
 ## Technologies
 
 - React
